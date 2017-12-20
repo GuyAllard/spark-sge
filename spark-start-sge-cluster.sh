@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 DIR=.spark
 EXECUTORS=4
@@ -17,7 +17,7 @@ while getopts "d:e:c:m:" opt; do
       ;;
     m ) GB_MEM_PER_EXECUTOR=$OPTARG
       ;;
-    \? ) 
+    \? )
       echo "Usage: $0 [-d] output_dir [-e] executors [-c] cpu_per_executor [-m] gb_mem_per_executor"
       exit 1
       ;;
@@ -47,6 +47,7 @@ echo "Starting a master"
 spark-class org.apache.spark.deploy.master.Master 2>> $LOG_DIR/master.log &
 echo "Master log: $LOG_DIR/master.log"
 
+# TODO: Integrate test to properly check if master has started.
 sleep 10
 
 SPARK_MASTER=`tail -n 40 $LOG_DIR/master.log | grep "Starting Spark master at" | tail -n 1 | sed "s/.*Starting Spark master at //"`
@@ -69,4 +70,3 @@ echo "Executors submitted"
 wait `jobs -p`
 
 kill_child_processes
-
