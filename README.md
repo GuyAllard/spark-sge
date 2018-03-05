@@ -4,14 +4,14 @@ This script will launch a spark cluster on a sge cluster.
 
 | Arg | Destription | Default |
 | --- | ----------- | ------- |
-| -d  | Log directory | .spark |
+| -d  | Log directory | $PWD/.spark |
 | -e  | Number of executors | 4 |
-| -c  | Number of CPU per executor | 4 |
+| -c  | Number of CPU's per executor | 4 |
 | -m  | Memory per executor in GB | 20 |
 | -l  | Resource tag | h_vmem |
 | -p  | Parallel environment (required) | - |
 
-On ctrl-c The executor jobs will be killed
+On ctrl-c the executor jobs will be killed.
 
 ### Example:
 
