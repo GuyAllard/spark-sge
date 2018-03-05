@@ -16,11 +16,11 @@ On ctrl-c the executor jobs will be killed.
 ### Example:
 
 ```bash
-# This will start a cluster with 20 executors with 4 cpu's each, 80 cpu in total and 400Gb of memory
+# This will start a cluster with 20 executors with 4 cpu's each, 80 cpu's in total and 400Gb of memory
 spark-start-sge-cluster -e 20 -p <pe>
 ```
 
 ```bash
-# This will start a cluster with 5 executors with 5 cpu's each, 25 cpu in total and 200Gb of memory
+# This will start a cluster with 5 executors with 5 cpu's each, 25 cpu's in total and 200Gb of memory
 spark-start-sge-cluster -e 5 -m 40 -c 5 -p <pe>
 ```
