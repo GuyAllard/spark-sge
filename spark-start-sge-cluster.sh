@@ -59,7 +59,7 @@ kill_child_processes() {
 trap "kill_child_processes 1 $$" INT
 
 echo "Starting a master"
-spark-class org.apache.spark.deploy.master.Master 2>> $LOG_DIR/master.log &
+spark-class org.apache.spark.deploy.master.Master 2>&1 >> $LOG_DIR/master.log &
 echo "Master log: $LOG_DIR/master.log"
 
 # TODO: Integrate test to properly check if master has started.
@@ -76,7 +76,7 @@ ssh localhost -t -t `which spark-class` \
 org.apache.spark.deploy.worker.Worker $SPARK_MASTER \
 -c $CPU_PER_EXECUTOR \
 -m ${GB_MEM_PER_EXECUTOR}G \
--d $PWD >> $LOG_DIR/executor-${i}.log &
+-d $PWD 2>&1 >> $LOG_DIR/executor-${i}.log &
 echo "Executor $i submitted: log: $LOG_DIR/executor-${i}.log"
 done
 
