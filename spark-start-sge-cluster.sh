@@ -63,7 +63,7 @@ spark-class org.apache.spark.deploy.master.Master 2>> $LOG_DIR/master.log >> $LO
 echo "Master log: $LOG_DIR/master.log"
 
 # TODO: Integrate test to properly check if master has started.
-sleep 10
+sleep 20
 
 SPARK_MASTER=`tail -n 40 $LOG_DIR/master.log | grep "Starting Spark master at" | tail -n 1 | sed "s/.*Starting Spark master at //"`
 echo "Spark master: $SPARK_MASTER"
